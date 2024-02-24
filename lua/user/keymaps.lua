@@ -12,4 +12,21 @@ lvim.keys.normal_mode["<Tab>"] = "<c-w>w"
 lvim.keys.normal_mode["<S-Tab>"] = "<c-w>W"
 
 -- plugin outline
-lvim.builtin.which_key.mappings["o"] = {"<cmd>Outline<cr>", "Toggle outline"}
+lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }
+
+-- plugin code_runner
+lvim.builtin.which_key.mappings["r"] = {
+  name = "Run",
+  s = {
+    '<cmd>autocmd bufwritepost [^_]*.sass,[^_]*.scss  silent exec "!sass %:p %:r.css"<CR>',
+    "Auto Compile Sass",
+  },
+  r = { "<cmd>RunCode<CR>", "Run Code" },
+  f = { "<cmd>RunFile<CR>", "Run File" },
+  p = { "<cmd>RunProject<CR>", "Run Project" },
+  g = { "<cmd>ToggleTerm size=70 direction=vertical<cr>gradle run<cr>", "Run Gradle" },
+  m = {
+    "<cmd>ToggleTerm size=70 direction=vertical<cr>mvn exec:java -Dexec.mainClass=com.code.App<cr>",
+    "Run MVN",
+  },
+}
