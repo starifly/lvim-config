@@ -9,7 +9,7 @@
 | &lt;leader&gt;f &lt;leader&gt;s | telescope (查找文件，搜索文本等) | normal |
 | &lt;leader&gt;r | code_runner (运行程序) | normal |
 | &lt;leader&gt;; | alpha (dashboard) | normal |
-| &lt;C-\&gt; &lt;M-1/2/3&gt; | toggleterm (终端) | normal |
+| &lt;C-\\&gt; &lt;M-1/2/3&gt; | toggleterm (终端) | normal |
 
 ### LSP
 
