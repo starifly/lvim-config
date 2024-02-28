@@ -30,7 +30,6 @@ au("BufReadPost", {
     endif
     ]],
 })
-lvim.format_on_save.enabled = true
 
 -- lualine settings --
 -- lvim.builtin.lualine.style = "default" -- or "none"
