@@ -1,5 +1,19 @@
 local M = {}
 
+M.escape_rg_text = function(text)
+  text = text:gsub('%(', '\\%(')
+  text = text:gsub('%)', '\\%)')
+  text = text:gsub('%[', '\\%[')
+  text = text:gsub('%]', '\\%]')
+  text = text:gsub('%{', '\\%{')
+  text = text:gsub('%}', '\\%}')
+  text = text:gsub('"', '\\"')
+  text = text:gsub('-', '\\-')
+  text = text:gsub('+', '\\-')
+
+  return text
+end
+
 M.live_grep_raw = function(opts, mode)
   opts = opts or {}
   opts.prompt_title = 'Live Grep Raw (-t[ty] include, -T exclude -g"[!] [glob])"'
