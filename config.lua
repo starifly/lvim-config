@@ -31,6 +31,19 @@ au("BufReadPost", {
     ]],
 })
 
+-- 自动取消高亮
+vim.api.nvim_create_augroup("AutoClearSearchHighlight", { clear = true })
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+  group = "AutoClearSearchHighlight",
+  pattern = "*",
+  callback = function()
+    if vim.v.hlsearch == 1 then
+      vim.cmd("nohlsearch")
+      vim.o.hlsearch = true
+    end
+  end,
+})
+
 -- lualine settings --
 -- lvim.builtin.lualine.style = "default" -- or "none"
 -- -- diable lsp virtual text --
