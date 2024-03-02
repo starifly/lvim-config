@@ -23,11 +23,11 @@ lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
 -- lvim.keys.normal_mode[""] = ":nohlsearch<CR>:AnzuClearEcho"
 
 -- 利用telescope查找光标下的字符串
--- lvim.builtin.which_key.vmappings["sw"] = {
---   "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
---   "Find Selection" }
--- lvim.builtin.which_key.mappings["sw"] = {
---   ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
+lvim.builtin.which_key.vmappings["sw"] = {
+  "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
+  "Find Selection" }
+lvim.builtin.which_key.mappings["sw"] = {
+  ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
 
 -- plugin outline
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }
