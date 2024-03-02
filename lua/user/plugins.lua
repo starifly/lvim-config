@@ -72,22 +72,34 @@ lvim.plugins = {
   {
     -- 'kevinhwang91/nvim-hlslens',
     -- 搜索显示数量
-    'osyo-manga/vim-anzu',
+    "osyo-manga/vim-anzu",
     event = "VeryLazy",
+    init = function()
+      vim.g.anzu_enable_CursorMoved_AnzuUpdateSearchStatus = 1
+    end
     -- config = function()
     --   require("user.hlslens")
     -- end
   },
 
+  -- {
+  --   -- 优化搜索，移动光标后清除高亮
+  --   "romainl/vim-cool",
+  --   event = "VeryLazy",
+  -- },
+
   {
-    -- 优化搜索，移动光标后清除高亮
-    'romainl/vim-cool',
+    -- 支持查找光标下的字符串
+    "nvim-telescope/telescope-live-grep-args.nvim",
     event = "VeryLazy",
   },
 
   {
-    -- 支持查找光标下的字符串
-    'nvim-telescope/telescope-live-grep-args.nvim',
+    -- gxt_kt nvim-spectre : Search and substitute
+    "windwp/nvim-spectre",
     event = "VeryLazy",
+    config = function()
+      require("user.spectre")
+    end,
   },
 }

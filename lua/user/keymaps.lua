@@ -2,6 +2,7 @@ lvim.keys.normal_mode["<M-q>"] = "<cmd>qa<cr>"
 lvim.keys.insert_mode["<M-q>"] = "<cmd>qa<cr>"
 lvim.keys.normal_mode["<M-Q>"] = "<cmd>BufferKill<cr>"
 lvim.keys.insert_mode["<M-Q>"] = "<cmd>BufferKill<cr>"
+lvim.keys.normal_mode["<C-c>"] = "<cmd>bd<cr>"
 lvim.keys.normal_mode["<M-w>"] = "<cmd>update<cr>"
 lvim.keys.insert_mode["<M-w>"] = "<cmd>update<cr>"
 lvim.keys.normal_mode["<M-W>"] = "<cmd>wqa<cr>"
@@ -22,11 +23,11 @@ lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
 -- lvim.keys.normal_mode[""] = ":nohlsearch<CR>:AnzuClearEcho"
 
 -- 利用telescope查找光标下的字符串
-lvim.builtin.which_key.vmappings["sw"] = {
-  "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
-  "Find selection" }
-lvim.builtin.which_key.mappings["sw"] = {
-  ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find word" }
+-- lvim.builtin.which_key.vmappings["sw"] = {
+--   "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
+--   "Find Selection" }
+-- lvim.builtin.which_key.mappings["sw"] = {
+--   ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
 
 -- plugin outline
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }
@@ -47,3 +48,23 @@ lvim.builtin.which_key.mappings["r"] = {
     "Run MVN",
   },
 }
+
+-- plugin nvim-spectre
+-- 单词前后输入\b以精确匹配
+lvim.builtin.which_key.mappings["R"] = {
+  name = "Replace",
+  f = { ":lua require('spectre').open_file_search()<CR>", "Search And Replace On Current File" },
+  F = { ":lua require('spectre').open()<CR>", "Search And Replace In Whole Workspace" },
+  w = { "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Search And Replace Current Word" },
+  W = { "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>", "Search On Current File" },
+}
+vim.keymap.set('v', 'Rw',
+  '<esc><cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v"), path=require("user.functions").GetBufRelativePath()})<CR>',
+  {
+    desc = "Search Selection And Replace On Current File"
+  })
+vim.keymap.set('v', 'RW',
+  '<esc><cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v") })<CR>',
+  {
+    desc = "Search Selection And Replace In Whole Workspace"
+  })

@@ -29,6 +29,9 @@
 | 按键 | 描述 | 模式 |
 |-------|-------|-------|
 | &lt;leader&gt;/ | 注释 | normal, visual |
+| gcc | 行注释 | normal |
+| gbc | 块注释 | normal |
+| gc | 行注释 | visual |
 | gb | 块注释 | visual |
 | &lt;M-k&gt; | 向上移动行 | normal, visual |
 | &lt;M-j&gt; | 向下移动行 | normal, visual |
@@ -75,6 +78,15 @@
 | 按键 | 描述 | 模式 |
 |-------|-------|-------|
 | &lt;leader&gt;sr | 搜索最近打开的文件 | normal |
+| &lt;leader&gt;sw | 在工作区搜索光标下的字符 | normal |
+| &lt;leader&gt;sw | 在工作区搜索选中的字符 | visual |
+| &lt;leader&gt;Rf | 在当前文件下搜索并替换 | normal |
+| &lt;leader&gt;RF | 在工作区搜索并替换 | normal |
+| &lt;leader&gt;Rw | 在当前文件下搜索并替换光标下的单词 | normal |
+| &lt;leader&gt;RW | 在工作区搜索并替换光标下的单词 | normal |
+| &lt;leader&gt;Rw | 在当前文件下搜索并替换选中的字符 | visual |
+| &lt;leader&gt;RW | 在工作区搜索并替换选中的字符 | visual |
+| &lt;leader&gt;h | 清除搜索结果高亮 | normal |
 | &lt;leader&gt;sh | 搜索帮助文件 | normal |
 | &lt;M-q&gt; | 退出所有 | normal,insert |
 | &lt;M-w&gt; | 保存文件 | normal,insert |

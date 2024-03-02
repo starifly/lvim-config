@@ -1,6 +1,6 @@
 -- lvim.format_on_save = false
-vim.opt_local.shiftwidth = 4
-vim.opt_local.tabstop = 4
+-- vim.opt_local.shiftwidth = 4
+-- vim.opt_local.tabstop = 4
 
 vim.diagnostic.config({ virtual_text = true })
 
@@ -26,9 +26,9 @@ local clangd_flags = {
   "--suggest-missing-includes",
   "--cross-file-rename",
   "--completion-style=detailed",
-  "--pch-storage=memory", -- could also be disk
+  "--pch-storage=memory",     -- could also be disk
   "--folding-ranges",
-  "--enable-config", -- clangd 11+ supports reading from .clangd configuration file
+  "--enable-config",          -- clangd 11+ supports reading from .clangd configuration file
   "--offset-encoding=utf-16", --temporary fix for null-ls
   -- "--limit-references=1000",
   -- "--limit-resutls=1000",

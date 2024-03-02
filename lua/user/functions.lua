@@ -47,7 +47,22 @@ M.get_text = function(mode)
     end_pos = vim.api.nvim_buf_get_mark(0, "]")
   end
 
-  return string.sub(current_line, start_pos[2] + 1, end_pos[2] + 1)
+  return string.sub(current_line, start_pos[2] + 1, end_pos[2])
+end
+
+M.get_buf_fullpath = function()
+  -- print(vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()))
+  return vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+end
+
+M.GetBufRelativePath = function()
+  local path = string.gsub(M.get_buf_fullpath(), vim.fn.getcwd(), "")
+  -- Remove leading backslash if it exists
+  if string.sub(path, 1, 1) == "/" then
+    path = string.sub(path, 2)
+  end
+  -- print(path)
+  return path
 end
 
 return M

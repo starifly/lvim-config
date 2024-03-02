@@ -15,7 +15,10 @@ vim.opt.clipboard = "unnamedplus"
 -- colorscheme
 -- lvim.colorscheme = "catppuccin-mocha"
 
+-- 保存时自动格式化
 lvim.format_on_save.enabled = true
+-- 禁用自动安装lsp
+-- lvim.lsp.installer.setup.automatic_installation = false
 
 -- restore last position
 local api = vim.api
@@ -29,19 +32,6 @@ au("BufReadPost", {
         exe "normal! g`\""
     endif
     ]],
-})
-
--- 自动取消高亮
-vim.api.nvim_create_augroup("AutoClearSearchHighlight", { clear = true })
-vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-  group = "AutoClearSearchHighlight",
-  pattern = "*",
-  callback = function()
-    if vim.v.hlsearch == 1 then
-      vim.cmd("nohlsearch")
-      vim.o.hlsearch = true
-    end
-  end,
 })
 
 -- lualine settings --
