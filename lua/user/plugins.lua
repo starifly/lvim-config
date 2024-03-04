@@ -28,11 +28,11 @@ lvim.plugins = {
   },
 
   -- catppuccin colorscheme
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  -- },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+  },
 
   -- outline
   {
@@ -43,6 +43,13 @@ lvim.plugins = {
       -- Your setup opts here
       outline_window = {
         width = 20,
+      },
+      keymaps = {
+        fold_toggle = 'f',
+        -- Toggle folds for all nodes.
+        -- If at least one node is folded, this action will fold all nodes.
+        -- If all nodes are folded, this action will unfold all nodes.
+        fold_toggle_all = 'F',
       },
     },
   },
@@ -101,5 +108,12 @@ lvim.plugins = {
     config = function()
       require("user.spectre")
     end,
+  },
+
+  {
+    -- 解决跨系统剪贴板问题
+    -- neovim 0.10开始会原生支持osc52
+    "ojroques/nvim-osc52",
+    event = "VeryLazy",
   },
 }

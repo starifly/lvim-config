@@ -71,3 +71,8 @@ vim.keymap.set('v', 'RW',
   {
     desc = "Search Selection And Replace In Whole Workspace"
   })
+
+-- plugin nvim-osc52
+vim.keymap.set('n', '<C-c>', require('osc52').copy_operator, { expr = true })
+-- vim.keymap.set('n', '<C-C>', '<C-c>_', { remap = true })
+vim.keymap.set('v', '<C-c>', require('osc52').copy_visual)
