@@ -3,6 +3,9 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+reload "user.plugins"
+reload "user.keymaps"
+
 vim.loader.enable()
 
 -- general
@@ -69,6 +72,3 @@ vim.keymap.set('n', '<C-c>', '"+y')
 
 -- disabling core plugins
 -- lvim.builtin.which_key.active = false
-
-reload "user.plugins"
-reload "user.keymaps"
