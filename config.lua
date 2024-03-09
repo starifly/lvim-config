@@ -24,12 +24,9 @@ lvim.format_on_save.enabled = true
 -- lvim.lsp.installer.setup.automatic_installation = false
 
 -- restore last position
-local api = vim.api
-local au = api.nvim_create_autocmd
-local pos_group = api.nvim_create_augroup("pos_group", { clear = true })
-au("BufReadPost", {
+vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*",
-  group = pos_group,
+  group = vim.api.nvim_create_augroup("pos_group", { clear = true }),
   command = [[
     if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
         exe "normal! g`\""
@@ -102,3 +99,22 @@ lvim.builtin.lualine.sections.lualine_a = { mode_alias }
 
 -- disabling core plugins
 -- lvim.builtin.which_key.active = false
+
+-- modify nvim-tree default keymaps
+local function my_on_attach(bufnr)
+  local api = require "nvim-tree.api"
+
+  local function opts(desc)
+    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  end
+
+  -- default mappings
+  api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', 'gp', api.node.open.preview, opts('Open Preview'))
+  vim.keymap.del('n', '<Tab>', opts('Open Preview'))
+end
+
+lvim.builtin.nvimtree.setup.on_attach = my_on_attach
