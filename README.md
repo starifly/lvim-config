@@ -73,6 +73,15 @@
 | &lt;C-Left&gt; | 前一个buffer | normal,insert |
 | &lt;C-Right&gt; | 后一个buffer | normal,insert |
 
+### Diagnostic
+
+| 按键 | 描述 | 模式 |
+|-------|-------|-------|
+| &lt;C-n&gt; | 前一个诊断信息 | normal |
+| &lt;C-p&gt; | 后一个诊断信息 | normal |
+| &lt;C-f&gt; | 在浮动窗口中打开诊断信息 | normal |
+| &lt;C-q&gt; | 在quickfix中打开诊断信息 | normal |
+
 ### 其它
 
 | 按键 | 描述 | 模式 |

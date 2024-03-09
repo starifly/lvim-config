@@ -11,9 +11,21 @@ lvim.keys.normal_mode["<C-Left>"] = "<cmd>bprev<cr>"
 lvim.keys.normal_mode["<C-Right>"] = "<cmd>bnext<cr>"
 lvim.keys.normal_mode["<Tab>"] = "<c-w>w"
 lvim.keys.normal_mode["<S-Tab>"] = "<c-w>W"
--- 错误或警告跳转
+
+-- 诊断信息映射
 lvim.keys.normal_mode["<C-n>"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
 lvim.keys.normal_mode["<C-p>"] = "<cmd>lua vim.diagnostic.goto_prev()<CR>"
+-- show diagnostic on float
+-- lvim.keys.normal_mode["<C-f>"] = "<cmd>lua vim.diagnostic.open_float()<CR>"
+-- lvim.keys.normal_mode["<C-f>"] = function()
+--   if vim.bo.filetype ~= 'mason' then
+--     vim.diagnostic.open_float()
+--   else
+--     -- 在这里添加你希望在 Mason 文件中执行的操作，或者留空以忽略该按键
+--   end
+-- end
+-- open diagnostic quickfix
+lvim.keys.normal_mode["<C-q>"] = "<cmd>lua vim.diagnostic.setloclist()<CR>"
 
 -- plugin vim-anzu
 -- 使用 n/N 跳转到下一个/上一个匹配项时显示匹配计数
