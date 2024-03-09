@@ -58,6 +58,36 @@ vim.keymap.set('n', '<C-c>', '"+y')
 
 -- lualine settings --
 -- lvim.builtin.lualine.style = "default" -- or "none"
+-- lvim.builtin.lualine.sections = {
+-- lualine_a = { 'mode' },
+-- }
+local function mode_alias()
+  local mode_map = {
+    n = 'N',
+    i = 'I',
+    v = 'V',
+    V = 'V-Line',
+    c = 'C',
+    no = 'N-Pending',
+    s = 'S',
+    S = 'S-Line',
+    [''] = 'S-Block',
+    ic = 'I-C',
+    R = 'R',
+    Rv = 'V-R',
+    cv = 'Vim Ex',
+    ce = 'Ex',
+    r = 'P',
+    rm = 'M',
+    ['r?'] = 'C',
+    ['!'] = 'Sh',
+    t = 'T',
+  }
+
+  return mode_map[vim.fn.mode()]
+end
+lvim.builtin.lualine.sections.lualine_a = { mode_alias }
+
 -- -- diable lsp virtual text --
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --   vim.lsp.diagnostic.on_publish_diagnostics, {
