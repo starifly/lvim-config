@@ -14,6 +14,7 @@ vim.loader.enable()
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = false
 
 -- colorscheme
 -- lvim.colorscheme = "catppuccin-mocha"
@@ -99,6 +100,8 @@ lvim.builtin.lualine.sections.lualine_a = { mode_alias }
 
 -- disabling core plugins
 -- lvim.builtin.which_key.active = false
+
+lvim.builtin.telescope.theme = "center"
 
 -- modify nvim-tree default keymaps
 local function my_on_attach(bufnr)

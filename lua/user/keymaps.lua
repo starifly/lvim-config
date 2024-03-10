@@ -38,11 +38,15 @@ lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
 -- lvim.keys.normal_mode[""] = ":nohlsearch<CR>:AnzuClearEcho"
 
 -- 利用telescope查找光标下的字符串
-lvim.builtin.which_key.vmappings["sw"] = {
-  "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
-  "Find Selection" }
+-- lvim.builtin.which_key.vmappings["sw"] = {
+--   "<Esc>:lua require('user.functions').live_grep_raw({default_text=''}, 'v')<cr>",
+--   "Find Selection" }
+-- lvim.builtin.which_key.mappings["sw"] = {
+--   ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
 lvim.builtin.which_key.mappings["sw"] = {
-  ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
+  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor({ postfix = '' })<cr>", "Find Word" }
+lvim.builtin.which_key.vmappings["sw"] = {
+  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ postfix = '' })<cr>", "Find Selection" }
 
 -- plugin outline
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }
@@ -74,12 +78,12 @@ lvim.builtin.which_key.mappings["R"] = {
   W = { "<cmd>lua require('spectre').open_visual({select_word=true})<CR>", "Search Current Word In Whole Workspace" },
 }
 vim.keymap.set('v', 'Rw',
-  '<esc><cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v"), path=require("user.functions").GetBufRelativePath()})<CR>',
+  '<cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v"), path=require("user.functions").GetBufRelativePath()})<CR>',
   {
     desc = "Search Selection And Replace On Current File"
   })
 vim.keymap.set('v', 'RW',
-  '<esc><cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v") })<CR>',
+  '<cmd>lua require("spectre").open({ search_text=require("user.functions").get_text("v") })<CR>',
   {
     desc = "Search Selection And Replace In Whole Workspace"
   })

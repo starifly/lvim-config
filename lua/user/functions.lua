@@ -47,7 +47,7 @@ M.get_text = function(mode)
     end_pos = vim.api.nvim_buf_get_mark(0, "]")
   end
 
-  return string.sub(current_line, start_pos[2] + 1, end_pos[2])
+  return string.sub(current_line, start_pos[2] + 1, end_pos[2] + 1)
 end
 
 M.get_buf_fullpath = function()
