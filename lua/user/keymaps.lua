@@ -44,9 +44,11 @@ lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
 -- lvim.builtin.which_key.mappings["sw"] = {
 --   ":lua require('user.functions').live_grep_raw({default_text = vim.fn.expand('<cword>')})<cr>", "Find Word" }
 lvim.builtin.which_key.mappings["sw"] = {
-  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor({ postfix = '' })<cr>", "Find Word" }
+  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor({ postfix = '', quote = false })<cr>",
+  "Find Word" }
 lvim.builtin.which_key.vmappings["sw"] = {
-  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ postfix = '' })<cr>", "Find Selection" }
+  "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ postfix = '', quote = false })<cr>",
+  "Find Selection" }
 
 -- plugin outline
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }
