@@ -11,6 +11,7 @@ lvim.keys.normal_mode["<C-Left>"] = "<cmd>bprev<cr>"
 lvim.keys.normal_mode["<C-Right>"] = "<cmd>bnext<cr>"
 lvim.keys.normal_mode["<Tab>"] = "<c-w>w"
 lvim.keys.normal_mode["<S-Tab>"] = "<c-w>W"
+lvim.keys.normal_mode["<C-k>"] = "<c-v>"
 
 -- 诊断信息映射
 lvim.keys.normal_mode["<C-n>"] = "<cmd>lua vim.diagnostic.goto_next()<CR>"
@@ -49,6 +50,12 @@ lvim.builtin.which_key.mappings["sw"] = {
 lvim.builtin.which_key.vmappings["sw"] = {
   "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection({ postfix = '', quote = false })<cr>",
   "Find Selection" }
+
+-- 利用telescope在当前buffer模糊搜索
+lvim.builtin.which_key.mappings["s/"] = {
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {winblend = 10, previewer = false,})<cr>",
+  "[/] Fuzzily search in current buffer" }
 
 -- plugin outline
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Outline<cr>", "Toggle outline" }

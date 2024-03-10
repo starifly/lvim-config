@@ -89,6 +89,7 @@
 | &lt;leader&gt;sr | 搜索最近打开的文件 | normal |
 | &lt;leader&gt;sw | 在工作区搜索光标下的字符 | normal |
 | &lt;leader&gt;sw | 在工作区搜索选中的字符 | visual |
+| &lt;leader&gt;s/ | 在当前buffer模糊搜索 | normal |
 | &lt;leader&gt;Rf | 在当前文件下搜索并替换 | normal |
 | &lt;leader&gt;RF | 在工作区搜索并替换 | normal |
 | &lt;leader&gt;Rw | 在当前文件下搜索并替换光标下的单词 | normal |

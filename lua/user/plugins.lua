@@ -102,7 +102,7 @@ lvim.plugins = {
   },
 
   {
-    -- gxt_kt nvim-spectre : Search and substitute
+    -- nvim-spectre : Search and Replace
     "windwp/nvim-spectre",
     event = "VeryLazy",
     config = function()
