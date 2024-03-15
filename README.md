@@ -114,6 +114,33 @@
 
 如果要切换lsp，需要执行`:LvimCacheReset`
 
+#### 项目配置 -- 支持clangd
+
+c 和 c++ 语言需要借助外部工具来帮助 lsp 找到头文件和理解代码。对于 clangd 来说，可以用生成 compile_commands.json 方法来解决，这里又分为两种情况：
+
+1.基于 CMake 项目
+
+一是直接在命令行参数中指定，比如：
+
+```sh
+cmake -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+# or
+# cmake -S . -B build -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+```
+
+二是在 CMakeLists.txt 中添加：
+
+```
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+```
+
+2.基于 Makefile 项目
+
+此时要生成 compile_commands.json 需要用到一个叫 Bear 的工具，用法：`bear -- make -j14`
+
+参考：[Neovim C Cpp Lsp Integration Tips](https://ttys3.dev/blog/neovim-c-cpp-lsp-integration-tips)，[在vscode下写自己的头文件clangd会报错找不到头文件该怎么解决？
+](https://www.zhihu.com/question/427250657)
+
 ### Mason
 
 `:Mason`, python需要用mason安装ruff、black
@@ -128,4 +155,3 @@
 - codium
 - The perfect Neovim setup for C++：https://www.youtube.com/watch?v=lsFoZIg-oDs&list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf&index=6
 - The perfect Neovim setup for Go：https://www.youtube.com/watch?v=i04sSQjd-qo&list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf&index=3
-- 搜索结果数目显示

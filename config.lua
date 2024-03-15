@@ -15,14 +15,16 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = false
+vim.opt.confirm = true -- 退出时确认
 
 -- colorscheme
 -- lvim.colorscheme = "catppuccin-mocha"
+lvim.colorscheme = "tokyonight-night"
 
 -- 保存时自动格式化
 lvim.format_on_save.enabled = true
 -- 禁用自动安装lsp
--- lvim.lsp.installer.setup.automatic_installation = false
+lvim.lsp.installer.setup.automatic_installation = false
 
 -- restore last position
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -57,7 +59,7 @@ vim.keymap.set('n', '<C-c>', '"+y')
 -- lualine settings --
 -- lvim.builtin.lualine.style = "default" -- or "none"
 -- lvim.builtin.lualine.sections = {
--- lualine_a = { 'mode' },
+--   lualine_a = { 'mode' },
 -- }
 local function mode_alias()
   local mode_map = {
@@ -102,6 +104,16 @@ local function mode_alias()
   return mode_map[vim.fn.mode()]
 end
 lvim.builtin.lualine.sections.lualine_a = { mode_alias }
+
+local components = require("lvim.core.lualine.components")
+
+lvim.builtin.lualine.sections.lualine_x = {
+  components.filetype,
+  components.diagnostics,
+  components.lsp,
+  components.treesitter,
+  components.spaces,
+}
 
 -- -- diable lsp virtual text --
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(

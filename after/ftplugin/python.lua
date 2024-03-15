@@ -9,7 +9,7 @@ lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(serve
   return server ~= "pylsp"
 end, lvim.lsp.automatic_configuration.skipped_servers)
 
--- require("lvim.lsp.manager").setup("pylsp")
+require("lvim.lsp.manager").setup("pylsp")
 
 -- setup formatting
 local formatters = require "lvim.lsp.null-ls.formatters"
