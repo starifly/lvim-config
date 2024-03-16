@@ -37,6 +37,29 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     ]],
 })
 
+-- 大文件读取优化
+vim.cmd([[
+augroup LargeFile
+        let g:large_file = 3145728 " 3MB
+
+        " Set options:
+        "   eventignore+=FileType (no syntax highlighting etc
+        "   assumes FileType always on)
+        "   noswapfile (save copy of file)
+        "   bufhidden=unload (save memory when other file is viewed)
+        "   buftype=nowritefile (is read-only)
+        "   undolevels=-1 (no undo possible)
+        au BufReadPre *
+                \ let f=expand("<afile>") |
+                \ if getfsize(f) > g:large_file |
+                        \ set eventignore+=FileType |
+                        \ setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 filetype=off lazyredraw eventignore=all nohidden syntax=off
+                \ else |
+                        \ set eventignore-=FileType |
+                \ endif
+augroup END
+]])
+
 -- https://github.com/ojroques/nvim-osc52?tab=readme-ov-file#using-nvim-osc52-as-clipboard-provider
 local function copy(lines, _)
   require('osc52').copy(table.concat(lines, '\n'))
@@ -150,3 +173,44 @@ local function my_on_attach(bufnr)
 end
 
 lvim.builtin.nvimtree.setup.on_attach = my_on_attach
+
+-- 启用命令行补全
+lvim.builtin.cmp.cmdline.enable = true
+
+lvim.lazy.opts.defaults.lazy = true
+
+lvim.builtin.treesitter.ensure_installed = {
+  "bash",
+  "c",
+  "cpp",
+  "json",
+  "lua",
+  "python",
+  "yaml",
+}
+
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
+
+local clangd_flags = {
+  "--fallback-style=Google",
+  "--background-index",
+  "-j=8",
+  "--all-scopes-completion",
+  "--pch-storage=memory",
+  "--clang-tidy",
+  "--log=error",
+  "--completion-style=detailed",
+  "--header-insertion=iwyu",
+  "--header-insertion-decorators",
+  "--enable-config",            -- clangd 11+ supports reading from .clangd configuration file
+  "--offset-encoding=utf-16",   --temporary fix for null-ls
+  "--ranking-model=heuristics",
+  "--function-arg-placeholders",
+}
+
+
+local opts = {
+  cmd = { "clangd", unpack(clangd_flags) },
+}
+
+require("lvim.lsp.manager").setup("clangd", opts)

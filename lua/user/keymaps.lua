@@ -30,11 +30,11 @@ lvim.keys.normal_mode["<C-q>"] = "<cmd>lua vim.diagnostic.setloclist()<CR>"
 
 -- plugin vim-anzu
 -- 使用 n/N 跳转到下一个/上一个匹配项时显示匹配计数
-lvim.keys.normal_mode["n"] = "<Plug>(anzu-n-with-echo)"
-lvim.keys.normal_mode["N"] = "<Plug>(anzu-N-with-echo)"
+-- lvim.keys.normal_mode["n"] = "<Plug>(anzu-n-with-echo)"
+-- lvim.keys.normal_mode["N"] = "<Plug>(anzu-N-with-echo)"
 -- 使用 * 或 # 搜索光标下的单词时显示匹配计数
-lvim.keys.normal_mode["*"] = "<Plug>(anzu-star-with-echo)"
-lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
+-- lvim.keys.normal_mode["*"] = "<Plug>(anzu-star-with-echo)"
+-- lvim.keys.normal_mode["#"] = "<Plug>(anzu-sharp-with-echo)"
 -- 设置快捷键来清除搜索高亮并关闭 anzu 的匹配计数显示
 -- lvim.keys.normal_mode[""] = ":nohlsearch<CR>:AnzuClearEcho"
 

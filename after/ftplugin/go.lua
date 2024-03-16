@@ -9,10 +9,10 @@ lvim.builtin.treesitter.ensure_installed = {
 ------------------------
 -- Plugins
 ------------------------
-lvim.plugins = {
-  "olexsmir/gopher.nvim",
-  "leoluz/nvim-dap-go",
-}
+-- lvim.plugins = {
+--   "olexsmir/gopher.nvim",
+--   "leoluz/nvim-dap-go",
+-- }
 
 ------------------------
 -- Formatting
@@ -20,7 +20,7 @@ lvim.plugins = {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   { command = "goimports", filetypes = { "go" } },
-  { command = "gofumpt", filetypes = { "go" } },
+  { command = "gofumpt",   filetypes = { "go" } },
 }
 
 lvim.format_on_save = {

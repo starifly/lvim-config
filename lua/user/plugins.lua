@@ -3,29 +3,45 @@ lvim.plugins = {
   -- python
   {
     "ChristianChiarulli/swenv.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = { "python" }
   },
   {
     "stevearc/dressing.nvim",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = { "python" }
   },
   {
     "mfussenegger/nvim-dap-python",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = { "python" }
   },
   {
     "nvim-neotest/neotest",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = { "python" }
   },
   {
     "nvim-neotest/neotest-python",
-    event = "VeryLazy",
+    -- event = "VeryLazy",
     ft = { "python" }
   },
+
+  {
+    "p00f/clangd_extensions.nvim",
+    -- event = "VeryLazy",
+    ft = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
+  },
+
+  {
+    "olexsmir/gopher.nvim",
+    ft = { "go" },
+  },
+  {
+    "leoluz/nvim-dap-go",
+    ft = { "go" },
+  },
+
 
   -- catppuccin colorscheme
   -- {
@@ -79,11 +95,11 @@ lvim.plugins = {
   {
     -- 'kevinhwang91/nvim-hlslens',
     -- 搜索显示数量
-    "osyo-manga/vim-anzu",
-    event = "VeryLazy",
-    init = function()
-      vim.g.anzu_enable_CursorMoved_AnzuUpdateSearchStatus = 1
-    end
+    -- "osyo-manga/vim-anzu",
+    -- event = "VeryLazy",
+    -- init = function()
+    --   vim.g.anzu_enable_CursorMoved_AnzuUpdateSearchStatus = 1
+    -- end
     -- config = function()
     --   require("user.hlslens")
     -- end
@@ -119,57 +135,13 @@ lvim.plugins = {
 
   {
     "folke/noice.nvim",
-     dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-        event = 'UIEnter',
-  -- lazy = false,
-  config = function()
-    require("noice").setup({
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true,
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = false, -- use a classic bottom cmdline for search
-        command_palette = false, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-      },
-      routes = {
-        {
-          view = "notify",
-          filter = { event = "msg_showmode" },
-        },
-      },
-      cmdline = {
-        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-        format = {
-          cmdline = { pattern = "^:", icon = "|>", lang = "vim", title = "" },
-        }
-      },
-      views = {
-        cmdline_popup = {
-          size = {
-            height = "auto",
-            width = "90%",
-          },
-          position = {
-            row = "90%",
-            col = "50%",
-          },
-          border = {
-            style = "single"
-          },
-        },
-      },
-    })
-  end,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    event = 'UIEnter',
+    -- lazy = false,
+    config = function()
+      require("user.noice")
+    end,
   },
 }
