@@ -238,3 +238,10 @@ lvim.icons.kind.Variable = "󰀫"
 -- 在线转换：https://snippet-generator.app/
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/lvim/snippets" })
+
+-- 取消折叠高亮
+require("tokyonight").setup({
+  on_highlights = function(hl, c)
+    hl.Folded = {}
+  end,
+})
