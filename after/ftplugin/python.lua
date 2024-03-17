@@ -4,10 +4,10 @@ lvim.builtin.treesitter.ensure_installed = {
 }
 
 -- remove pyright
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return server ~= "pylsp"
-end, lvim.lsp.automatic_configuration.skipped_servers)
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+--   return server ~= "pylsp"
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 require("lvim.lsp.manager").setup("pylsp")
 

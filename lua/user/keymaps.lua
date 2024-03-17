@@ -3,8 +3,8 @@ lvim.keys.insert_mode["<M-q>"] = "<cmd>qa<cr>"
 lvim.keys.normal_mode["<M-Q>"] = "<cmd>BufferKill<cr>"
 lvim.keys.insert_mode["<M-Q>"] = "<cmd>BufferKill<cr>"
 lvim.keys.normal_mode["<C-x>"] = "<cmd>bd<cr>"
-lvim.keys.normal_mode["<M-w>"] = "<cmd>update<cr>"
-lvim.keys.insert_mode["<M-w>"] = "<cmd>update<cr>"
+lvim.keys.normal_mode["<M-w>"] = "<cmd>w<cr>"
+lvim.keys.insert_mode["<M-w>"] = "<cmd>w<cr>"
 lvim.keys.normal_mode["<M-W>"] = "<cmd>wqa<cr>"
 lvim.keys.insert_mode["<M-W>"] = "<cmd>wqa<cr>"
 lvim.keys.normal_mode["<C-Left>"] = "<cmd>bprev<cr>"
@@ -101,3 +101,8 @@ vim.keymap.set('v', 'RW',
 vim.keymap.set('n', '<C-c>', require('osc52').copy_operator, { expr = true })
 -- vim.keymap.set('n', '<C-C>', '<C-c>_', { remap = true })
 vim.keymap.set('v', '<C-c>', require('osc52').copy_visual)
+
+-- plugin ufo
+vim.keymap.set('n', 'zr', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zm', require('ufo').closeAllFolds)
+vim.keymap.set('n', '<CR>', 'za', { desc = 'toggle fold' })

@@ -82,6 +82,12 @@
 | &lt;C-f&gt; | 在浮动窗口中打开诊断信息 | normal |
 | &lt;C-q&gt; | 在quickfix中打开诊断信息 | normal |
 
+### 折叠
+
+| &lt;CR&gt; | 折叠切换 | normal |
+| zr | 打开所有折叠 | normal |
+| zm | 折叠所有 | normal |
+
 ### 其它
 
 | 按键 | 描述 | 模式 |

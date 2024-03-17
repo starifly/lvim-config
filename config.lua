@@ -3,10 +3,13 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
-reload "user.plugins"
-reload "user.keymaps"
+reload("user.plugins")
+reload("user.autocmd")
+reload("user.keymaps")
 
 vim.loader.enable()
+
+lvim.log.level = "warn"
 
 -- general
 -- vim.opt.relativenumber = true -- relative line numbers
@@ -15,11 +18,38 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = false
-vim.opt.confirm = true -- 退出时确认
+vim.opt.confirm = true        -- 退出时确认
+vim.opt.shadafile = ""
+vim.opt.autowrite = true      -- Enable auto write
+vim.opt.expandtab = true      -- Use spaces instead of tabs
+vim.opt.pumblend = 10         -- Popup blend
+vim.opt.pumheight = 10        -- Maximum number of entries in a popup
+vim.opt.scrolloff = 4         -- Lines of context
+vim.opt.shiftround = true     -- Round indent
+vim.opt.showmode = false      -- Dont show mode since we have a statusline
+vim.opt.sidescrolloff = 8     -- Columns of context
+vim.opt.signcolumn = "yes"    -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase = true      -- Don't ignore case with capitals
+vim.opt.smartindent = true    -- Insert indents automatically
+vim.opt.splitbelow = true     -- Put new windows below current
+vim.opt.splitkeep = "screen"
+vim.opt.splitright = true     -- Put new windows right of current
+vim.opt.tabstop = 2           -- Number of spaces tabs count for
+vim.opt.updatetime = 200      -- Save swap file and trigger CursorHold
+vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.smoothscroll = true
+end
+-- for ufo plugin
+vim.opt.foldcolumn = '0' -- '0' is not bad
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+--
 
 -- colorscheme
 -- lvim.colorscheme = "catppuccin-mocha"
-lvim.colorscheme = "tokyonight-night"
+lvim.colorscheme = "tokyonight-moon"
 
 -- 保存时自动格式化
 lvim.format_on_save.enabled = true
@@ -62,21 +92,21 @@ augroup END
 
 -- https://github.com/ojroques/nvim-osc52?tab=readme-ov-file#using-nvim-osc52-as-clipboard-provider
 local function copy(lines, _)
-  require('osc52').copy(table.concat(lines, '\n'))
+  require("osc52").copy(table.concat(lines, "\n"))
 end
 
 local function paste()
-  return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+  return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
 end
 
 vim.g.clipboard = {
-  name = 'osc52',
-  copy = { ['+'] = copy, ['*'] = copy },
-  paste = { ['+'] = paste, ['*'] = paste },
+  name = "osc52",
+  copy = { ["+"] = copy, ["*"] = copy },
+  paste = { ["+"] = paste, ["*"] = paste },
 }
 
 -- Now the '+' register will copy to system clipboard using OSC52
-vim.keymap.set('n', '<C-c>', '"+y')
+vim.keymap.set("n", "<C-c>", '"+y')
 -- vim.keymap.set('n', '<C-C>', '"+yy')
 
 -- lualine settings --
@@ -86,42 +116,42 @@ vim.keymap.set('n', '<C-c>', '"+y')
 -- }
 local function mode_alias()
   local mode_map = {
-    ['n']     = 'N',
-    ['no']    = 'O-PENDING',
-    ['nov']   = 'O-PENDING',
-    ['noV']   = 'O-PENDING',
-    ['no\22'] = 'O-PENDING',
-    ['niI']   = 'N',
-    ['niR']   = 'N',
-    ['niV']   = 'N',
-    ['nt']    = 'N',
-    ['ntT']   = 'N',
-    ['v']     = 'V',
-    ['vs']    = 'V',
-    ['V']     = 'V-LINE',
-    ['Vs']    = 'V-LINE',
-    ['\22']   = 'V-BLOCK',
-    ['\22s']  = 'V-BLOCK',
-    ['s']     = 'S',
-    ['S']     = 'S-LINE',
-    ['\19']   = 'S-BLOCK',
-    ['i']     = 'I',
-    ['ic']    = 'I',
-    ['ix']    = 'I',
-    ['R']     = 'R',
-    ['Rc']    = 'R',
-    ['Rx']    = 'R',
-    ['Rv']    = 'V-REPLACE',
-    ['Rvc']   = 'V-REPLACE',
-    ['Rvx']   = 'V-REPLACE',
-    ['c']     = 'C',
-    ['cv']    = 'EX',
-    ['ce']    = 'EX',
-    ['r']     = 'R',
-    ['rm']    = 'MORE',
-    ['r?']    = 'CONFIRM',
-    ['!']     = 'SHELL',
-    ['t']     = 'T',
+    ["n"] = "N",
+    ["no"] = "O-PENDING",
+    ["nov"] = "O-PENDING",
+    ["noV"] = "O-PENDING",
+    ["no\22"] = "O-PENDING",
+    ["niI"] = "N",
+    ["niR"] = "N",
+    ["niV"] = "N",
+    ["nt"] = "N",
+    ["ntT"] = "N",
+    ["v"] = "V",
+    ["vs"] = "V",
+    ["V"] = "V-LINE",
+    ["Vs"] = "V-LINE",
+    ["\22"] = "V-BLOCK",
+    ["\22s"] = "V-BLOCK",
+    ["s"] = "S",
+    ["S"] = "S-LINE",
+    ["\19"] = "S-BLOCK",
+    ["i"] = "I",
+    ["ic"] = "I",
+    ["ix"] = "I",
+    ["R"] = "R",
+    ["Rc"] = "R",
+    ["Rx"] = "R",
+    ["Rv"] = "V-REPLACE",
+    ["Rvc"] = "V-REPLACE",
+    ["Rvx"] = "V-REPLACE",
+    ["c"] = "C",
+    ["cv"] = "EX",
+    ["ce"] = "EX",
+    ["r"] = "R",
+    ["rm"] = "MORE",
+    ["r?"] = "CONFIRM",
+    ["!"] = "SHELL",
+    ["t"] = "T",
   }
 
   return mode_map[vim.fn.mode()]
@@ -131,11 +161,12 @@ lvim.builtin.lualine.sections.lualine_a = { mode_alias }
 local components = require("lvim.core.lualine.components")
 
 lvim.builtin.lualine.sections.lualine_x = {
-  components.filetype,
   components.diagnostics,
+  "encoding",
+  components.filetype,
   components.lsp,
   components.treesitter,
-  components.spaces,
+  -- components.spaces,
 }
 
 -- -- diable lsp virtual text --
@@ -157,7 +188,7 @@ lvim.builtin.telescope.theme = "center"
 
 -- modify nvim-tree default keymaps
 local function my_on_attach(bufnr)
-  local api = require "nvim-tree.api"
+  local api = require("nvim-tree.api")
 
   local function opts(desc)
     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -167,9 +198,9 @@ local function my_on_attach(bufnr)
   api.config.mappings.default_on_attach(bufnr)
 
   -- custom mappings
-  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
-  vim.keymap.set('n', 'gp', api.node.open.preview, opts('Open Preview'))
-  vim.keymap.del('n', '<Tab>', opts('Open Preview'))
+  vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+  vim.keymap.set("n", "gp", api.node.open.preview, opts("Open Preview"))
+  vim.keymap.del("n", "<Tab>", opts("Open Preview"))
 end
 
 lvim.builtin.nvimtree.setup.on_attach = my_on_attach
@@ -189,28 +220,21 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
 }
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "clangd" })
+-- 自定义图标
+lvim.icons.kind.Constant = "󰏿"
+lvim.icons.kind.Constructor = ""
+lvim.icons.kind.Enum = " "
+lvim.icons.kind.EnumMember = " "
+lvim.icons.kind.Field = " "
+lvim.icons.kind.Function = "󰊕"
+lvim.icons.kind.Interface = " "
+lvim.icons.kind.Key = "󰌋"
+lvim.icons.kind.Namespace = "󰦮 "
+lvim.icons.kind.Snippet = " " -- ""," "," "
+lvim.icons.kind.String = ""
+lvim.icons.kind.Variable = "󰀫"
 
-local clangd_flags = {
-  "--fallback-style=Google",
-  "--background-index",
-  "-j=8",
-  "--all-scopes-completion",
-  "--pch-storage=memory",
-  "--clang-tidy",
-  "--log=error",
-  "--completion-style=detailed",
-  "--header-insertion=iwyu",
-  "--header-insertion-decorators",
-  "--enable-config",            -- clangd 11+ supports reading from .clangd configuration file
-  "--offset-encoding=utf-16",   --temporary fix for null-ls
-  "--ranking-model=heuristics",
-  "--function-arg-placeholders",
-}
-
-
-local opts = {
-  cmd = { "clangd", unpack(clangd_flags) },
-}
-
-require("lvim.lsp.manager").setup("clangd", opts)
+-- 加载自定义snippets
+-- 在线转换：https://snippet-generator.app/
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/lvim/snippets" })

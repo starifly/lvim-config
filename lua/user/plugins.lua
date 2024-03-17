@@ -7,9 +7,10 @@ lvim.plugins = {
     ft = { "python" }
   },
   {
+    -- mason 筛选
     "stevearc/dressing.nvim",
-    -- event = "VeryLazy",
-    ft = { "python" }
+    event = "VeryLazy",
+    -- ft = { "python" }
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -143,5 +144,17 @@ lvim.plugins = {
     config = function()
       require("user.noice")
     end,
+  },
+
+  {
+
+    "kevinhwang91/nvim-ufo",
+    config = function()
+      require("user.ufo").config()
+    end,
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
+    event = "VeryLazy",
   },
 }
