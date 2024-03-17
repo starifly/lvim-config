@@ -3,6 +3,7 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
+reload("user.lazyfile")
 reload("user.plugins")
 reload("user.autocmd")
 reload("user.keymaps")
@@ -225,13 +226,15 @@ lvim.icons.kind.Constant = "󰏿"
 lvim.icons.kind.Constructor = ""
 lvim.icons.kind.Enum = " "
 lvim.icons.kind.EnumMember = " "
-lvim.icons.kind.Field = " "
+lvim.icons.kind.Field = "󰜢" --" "
 lvim.icons.kind.Function = "󰊕"
 lvim.icons.kind.Interface = " "
 lvim.icons.kind.Key = "󰌋"
-lvim.icons.kind.Namespace = "󰦮 "
+lvim.icons.kind.Namespace = "󰦮"
 lvim.icons.kind.Snippet = " " -- ""," "," "
 lvim.icons.kind.String = ""
+lvim.icons.kind.Text = "󰉿"
+lvim.icons.kind.Value = "󰎠"
 lvim.icons.kind.Variable = "󰀫"
 
 -- 加载自定义snippets

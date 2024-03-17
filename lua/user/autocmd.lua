@@ -26,8 +26,8 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- 自动保存同时触发格式化
 -- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-vim.api.nvim_create_autocmd({ "InsertLeave" }, {
-  pattern = { "*" },
-  command = "silent! wall",
-  nested = true,
-})
+-- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+--   pattern = { "*" },
+--   command = "silent! wall",
+--   nested = true,
+-- })
