@@ -3,7 +3,6 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
-reload("user.lazyfile")
 reload("user.plugins")
 reload("user.autocmd")
 reload("user.keymaps")
@@ -19,12 +18,12 @@ vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = false
-vim.opt.confirm = true        -- 退出时确认
+vim.opt.confirm = true   -- 退出时确认
 vim.opt.shadafile = ""
-vim.opt.autowrite = true      -- Enable auto write
-vim.opt.expandtab = true      -- Use spaces instead of tabs
-vim.opt.pumblend = 10         -- Popup blend
-vim.opt.pumheight = 10        -- Maximum number of entries in a popup
+vim.opt.autowrite = true -- Enable auto write
+vim.opt.expandtab = true -- Use spaces instead of tabs
+-- vim.opt.pumblend = 10         -- Popup blend
+-- vim.opt.pumheight = 10        -- Maximum number of entries in a popup
 vim.opt.scrolloff = 4         -- Lines of context
 vim.opt.shiftround = true     -- Round indent
 vim.opt.showmode = false      -- Dont show mode since we have a statusline
@@ -36,7 +35,6 @@ vim.opt.splitbelow = true     -- Put new windows below current
 vim.opt.splitkeep = "screen"
 vim.opt.splitright = true     -- Put new windows right of current
 vim.opt.tabstop = 2           -- Number of spaces tabs count for
-vim.opt.updatetime = 200      -- Save swap file and trigger CursorHold
 vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 if vim.fn.has("nvim-0.10") == 1 then
   vim.opt.smoothscroll = true
@@ -49,8 +47,45 @@ vim.opt.foldenable = true
 --
 
 -- colorscheme
--- lvim.colorscheme = "catppuccin-mocha"
-lvim.colorscheme = "tokyonight-moon"
+lvim.colorscheme = "tokyonight-night"
+require("tokyonight").setup({
+  -- style = "night",
+  -- transparent = true,
+  -- terminal_colors = true,
+  -- styles = {
+  --   comments = { italic = true },
+  --   keywords = { italic = true },
+  --   functions = {},
+  --   variables = {},
+  --   sidebars = "dark",
+  --   floats = "dark",
+  -- },
+  -- day_brightness = 0.1,
+
+  on_colors = function(colors)
+    colors.border = "#565f89"
+    colors.bg_statusline = colors.none
+    -- colors.Pmenu = { bg = "#FF00FF" }
+  end,
+  on_highlights = function(hl, c)
+    hl.Folded = {} -- 取消折叠高亮
+    hl.VerticalSplit = {
+      fg = "#565f89",
+      bg = nil,
+    }
+  end,
+})
+-- 设置补全的颜色
+-- vim.cmd('highlight Pmenu ctermbg=236 guibg=#FF00FF')
+-- vim.cmd('highlight PmenuSel ctermbg=240 guibg=#a9b1d6')
+-- vim.cmd("colorscheme rose-pine-moon")
+-- vim.cmd([[
+--   augroup CmpColors
+--     autocmd!
+--     autocmd ColorScheme * highlight Pmenu ctermbg=236 guibg=#1f2335
+--     autocmd ColorScheme * highlight PmenuSel ctermbg=240 guibg=#363d59
+--   augroup END
+-- ]])
 
 -- 保存时自动格式化
 lvim.format_on_save.enabled = true
@@ -209,6 +244,7 @@ lvim.builtin.nvimtree.setup.on_attach = my_on_attach
 -- 启用命令行补全
 lvim.builtin.cmp.cmdline.enable = true
 
+-- 插件是否默认懒加载
 lvim.lazy.opts.defaults.lazy = true
 
 lvim.builtin.treesitter.ensure_installed = {
@@ -241,10 +277,3 @@ lvim.icons.kind.Variable = "󰀫"
 -- 在线转换：https://snippet-generator.app/
 require("luasnip.loaders.from_vscode").lazy_load()
 require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/lvim/snippets" })
-
--- 取消折叠高亮
-require("tokyonight").setup({
-  on_highlights = function(hl, c)
-    hl.Folded = {}
-  end,
-})

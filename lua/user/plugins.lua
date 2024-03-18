@@ -4,7 +4,7 @@ lvim.plugins = {
   {
     "ChristianChiarulli/swenv.nvim",
     -- event = "VeryLazy",
-    ft = { "python" }
+    ft = { "python" },
   },
   {
     -- mason 筛选
@@ -15,17 +15,17 @@ lvim.plugins = {
   {
     "mfussenegger/nvim-dap-python",
     -- event = "VeryLazy",
-    ft = { "python" }
+    ft = { "python" },
   },
   {
     "nvim-neotest/neotest",
     -- event = "VeryLazy",
-    ft = { "python" }
+    ft = { "python" },
   },
   {
     "nvim-neotest/neotest-python",
     -- event = "VeryLazy",
-    ft = { "python" }
+    ft = { "python" },
   },
 
   {
@@ -43,13 +43,13 @@ lvim.plugins = {
     ft = { "go" },
   },
 
-
   -- catppuccin colorscheme
-  -- {
-  --   "catppuccin/nvim",
-  --   name = "catppuccin",
-  --   priority = 1000,
-  -- },
+  {
+    -- "catppuccin/nvim",
+    -- name = "catppuccin",
+    -- lazy = false,
+    -- priority = 1000,
+  },
 
   -- outline
   {
@@ -62,11 +62,11 @@ lvim.plugins = {
         width = 20,
       },
       keymaps = {
-        fold_toggle = 'f',
+        fold_toggle = "f",
         -- Toggle folds for all nodes.
         -- If at least one node is folded, this action will fold all nodes.
         -- If all nodes are folded, this action will unfold all nodes.
-        fold_toggle_all = 'F',
+        fold_toggle_all = "F",
       },
     },
   },
@@ -139,7 +139,7 @@ lvim.plugins = {
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
-    event = 'UIEnter',
+    event = "UIEnter",
     -- lazy = false,
     config = function()
       require("user.noice")
