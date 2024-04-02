@@ -159,7 +159,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 - gp.nvim
 - copilot.vim
 - copilot-cmp && copilot.lua
-- gp.nvim
+- sg.nvim
 - codium
 - The perfect Neovim setup for C++：https://www.youtube.com/watch?v=lsFoZIg-oDs&list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf&index=6
 - The perfect Neovim setup for Go：https://www.youtube.com/watch?v=i04sSQjd-qo&list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf&index=3
