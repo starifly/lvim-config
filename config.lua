@@ -4,7 +4,7 @@
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
 reload("user.plugins")
-reload("user.autocmd")
+reload("user.autocmds")
 reload("user.keymaps")
 
 vim.loader.enable()
@@ -196,6 +196,17 @@ lvim.builtin.lualine.sections.lualine_a = { mode_alias }
 
 local components = require("lvim.core.lualine.components")
 
+lvim.builtin.lualine.sections.lualine_b = {
+  -- "branch",
+  -- "diff",
+  components.branch,
+}
+lvim.builtin.lualine.sections.lualine_c = {
+  components.diff,
+  "filename",
+  -- "diff",
+  components.python_env,
+}
 lvim.builtin.lualine.sections.lualine_x = {
   components.diagnostics,
   "encoding",
@@ -204,6 +215,10 @@ lvim.builtin.lualine.sections.lualine_x = {
   components.treesitter,
   -- components.spaces,
 }
+
+-- lvim.builtin.lualine.options.theme = "catppuccin"
+-- lvim.builtin.lualine.options.component_separators = { left = '', right = '' }
+-- lvim.builtin.lualine.options.section_separators = { left = '', right = '' }
 
 -- -- diable lsp virtual text --
 -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
