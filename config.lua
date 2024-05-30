@@ -106,7 +106,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 -- 大文件读取优化
 vim.cmd([[
 augroup LargeFile
-        let g:large_file = 3145728 " 3MB
+        let g:large_file = 31457280 " 30MB
 
         " Set options:
         "   eventignore+=FileType (no syntax highlighting etc

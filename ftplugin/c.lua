@@ -25,8 +25,8 @@ local clangd_flags = {
   "--all-scopes-completion",
   "--clang-tidy",
   "--log=error",
-  "--suggest-missing-includes",
-  "--cross-file-rename",
+  -- "--suggest-missing-includes",
+  -- "--cross-file-rename",
   "--completion-style=detailed",
   "--pch-storage=memory",     -- could also be disk
   "--folding-ranges",

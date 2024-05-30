@@ -9,7 +9,7 @@ lvim.builtin.treesitter.ensure_installed = {
 --   return server ~= "pylsp"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
-require("lvim.lsp.manager").setup("pylsp")
+require("lvim.lsp.manager").setup("pyright")
 
 -- setup formatting
 local formatters = require "lvim.lsp.null-ls.formatters"
