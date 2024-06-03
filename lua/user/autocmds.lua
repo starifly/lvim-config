@@ -31,3 +31,13 @@ vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
 --   command = "silent! wall",
 --   nested = true,
 -- })
+
+-- https://shaobin-jiang.github.io/blog/posts/neovim-shada/
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  once = true,
+  callback = function()
+    local shada = vim.fn.stdpath("state") .. "/shada/main.shada"
+    vim.o.shadafile = shada
+    vim.api.nvim_command("rshada! " .. shada)
+  end,
+})
