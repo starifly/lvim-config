@@ -118,7 +118,7 @@
 
 ### LSP
 
-`:LspInstall pylsp`
+`:LspInstall pyright`
 
 如果要切换lsp，需要执行`:LvimCacheReset`
 
