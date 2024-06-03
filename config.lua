@@ -9,33 +9,33 @@ reload("user.keymaps")
 
 vim.loader.enable()
 
-lvim.log.level = "warn"
+lvim.log.level        = "warn"
 
 -- general
 -- vim.opt.relativenumber = true -- relative line numbers
 -- vim.log.levels="debug"
 vim.opt.termguicolors = true
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.undofile = false
-vim.opt.confirm = true   -- 退出时确认
-vim.opt.shadafile = "NONE"
-vim.opt.autowrite = true -- Enable auto write
-vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.mouse         = "a"
+vim.opt.clipboard     = "unnamedplus"
+vim.opt.undofile      = false
+vim.opt.confirm       = true -- 退出时确认
+vim.opt.shadafile     = "NONE"
+vim.opt.autowrite     = true -- Enable auto write
+vim.opt.expandtab     = true -- Use spaces instead of tabs
 -- vim.opt.pumblend = 10         -- Popup blend
 -- vim.opt.pumheight = 10        -- Maximum number of entries in a popup
-vim.opt.scrolloff = 4         -- Lines of context
-vim.opt.shiftround = true     -- Round indent
-vim.opt.showmode = false      -- Dont show mode since we have a statusline
-vim.opt.sidescrolloff = 8     -- Columns of context
-vim.opt.signcolumn = "yes"    -- Always show the signcolumn, otherwise it would shift the text each time
-vim.opt.smartcase = true      -- Don't ignore case with capitals
-vim.opt.smartindent = true    -- Insert indents automatically
-vim.opt.splitbelow = true     -- Put new windows below current
-vim.opt.splitkeep = "screen"
-vim.opt.splitright = true     -- Put new windows right of current
-vim.opt.tabstop = 2           -- Number of spaces tabs count for
-vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+vim.opt.scrolloff     = 4       -- Lines of context
+vim.opt.shiftround    = true    -- Round indent
+vim.opt.showmode      = false   -- Dont show mode since we have a statusline
+vim.opt.sidescrolloff = 8       -- Columns of context
+vim.opt.signcolumn    = "yes"   -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase     = true    -- Don't ignore case with capitals
+vim.opt.smartindent   = true    -- Insert indents automatically
+vim.opt.splitbelow    = true    -- Put new windows below current
+vim.opt.splitkeep     = "screen"
+vim.opt.splitright    = true    -- Put new windows right of current
+vim.opt.tabstop       = 2       -- Number of spaces tabs count for
+vim.opt.virtualedit   = "block" -- Allow cursor to move where there is no text in visual block mode
 if vim.fn.has("nvim-0.10") == 1 then
   vim.opt.smoothscroll = true
 end
