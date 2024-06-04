@@ -17,8 +17,8 @@ formatters.setup { { name = "black" }, }
 lvim.format_on_save.pattern = { "*.py" }
 
 -- setup linting
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup { { command = "ruff", filetypes = { "python" } } }
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup { { command = "ruff", filetypes = { "python" } } }
 
 -- setup debug adapter
 lvim.builtin.dap.active = true
